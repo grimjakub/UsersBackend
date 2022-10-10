@@ -66,7 +66,7 @@ def add_user(name, year):
         db.session.commit()
     except:
         print("User already exists")
-    return redirect(url_for("home"))
+    return redirect(url_for("get_all_users"))
 
 
 @app.route('/edit-users/<user>/<new_name>/<new_year>')
@@ -84,14 +84,16 @@ def edit_user(user, new_name, new_year):
 
 @app.route('/delete-user/<user>')
 def delete_user(user):
-    # user_to_delete = User.query.get(user)
     try:
         user_to_delete = User.query.filter(User.name == user)[0]
+        comments_to_delete = Comment.query.filter(Comment.user_id == user_to_delete.id).all()
+        for comment in comments_to_delete:
+            db.session.delete(comment)
         db.session.delete(user_to_delete)
         db.session.commit()
     except:
         pass
-    return redirect(url_for("home"))
+    return redirect(url_for("get_all_users"))
 
 
 @app.route('/comments')
@@ -127,7 +129,7 @@ def create_comment(name, comment):
     )
     db.session.add(new_comment)
     db.session.commit()
-    return redirect(url_for("home"))
+    return redirect(url_for("get_all_comments"))
 
 
 @app.route('/edit-comment/<index>/<comment>')
@@ -138,7 +140,7 @@ def edit_comment(index, comment):
         db.session.commit()
     except:
         pass
-    return redirect(url_for("home"))
+    return redirect(url_for("get_all_comments"))
 
 
 @app.route("/delete-comment/<index>")
@@ -149,7 +151,7 @@ def delete_comment(index):
         db.session.commit()
     except:
         pass
-    return redirect(url_for("home"))
+    return redirect(url_for("get_all_comments"))
 
 
 ## PART TWO ##
