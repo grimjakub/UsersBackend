@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test task</title>
+    <h3>Try endpoints:</h3>
+    <a class="btn btn-primary float-right" href="{{url_for('get_all_users')}}">Get all users</a><br>
+    <a class="btn btn-primary float-right" href="{{url_for('get_one_user',name='Bob')}}">Get one user (get Bob)</a><br>
+    <a class="btn btn-primary float-right" href="{{url_for('add_user',name='Ed',year=2000)}}">Add user (add Ed)</a><br>
+    <a class="btn btn-primary float-right" href="{{url_for('edit_user',user='Ed',new_name='Eddie', new_year=1999)}}">Edit
+        user (Ed)</a><br>
+    <a class="btn btn-primary float-right" href="{{url_for('delete_user',user='Ed')}}">Delete user (Ed)</a>
+    <hr>
+    <a class="btn btn-primary float-right" href="{{url_for('get_all_comments')}}">All comments</a><br>
+    <a class="btn btn-primary float-right" href="{{url_for('get_one_comment',index=1)}}">Get comment (1)</a><br>
+    <a class="btn btn-primary float-right" href="{{url_for('create_comment',name='Bob',comment='Some another text')}}">Add
+        comment</a><br>
+    <a class="btn btn-primary float-right" href="{{url_for('edit_comment',index=1,comment='new text')}}">Edit comment
+        (1)</a><br>
+    <a class="btn btn-primary float-right" href="{{url_for('delete_comment',index=1)}}">Delete comment (1)</a>
+    <hr>
+    <a class="btn btn-primary float-right" href="{{url_for('get_animal')}}">Get random animal</a><br>
+
+
+</head>
+<body>
+
+</body>
+</html>
